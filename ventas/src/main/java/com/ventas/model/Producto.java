@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,11 +17,13 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idProducto;
 	
-	@Size(min = 3, message = "Nombre debe tener minimo 3 caracteres")
+	@NotNull(message = "El Campo Nombre no puede estar vacio")
+	@Size(min = 3, message = "El Campo Nombre debe tener minimo 3 caracteres")
 	@Column(name = "nombre", nullable = false, length = 70)
 	private String nombre;
 	
-	@Size(min = 3, message = "Marca debe tener minimo 3 caracteres")
+	@NotNull(message = "El Campo Marca no puede estar vacio")
+	@Size(min = 3, message = "El Campo Marca debe tener minimo 3 caracteres")
 	@Column(name = "marca", nullable = false, length = 70)
 	private String marca;
 	
